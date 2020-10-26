@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Scarsdale-Robotics/Remote-Hand-Raising/issues"
   },
-  "homepage": "https://github.com/Scarsdale-Robotics/Remote-Hand-Raising#readme"
+  "homepage": "https://github.com/Scarsdale-Robotics/Remote-Hand-Raising#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
