@@ -1,0 +1,19 @@
+{
+  "name": "remote-hand-raising",
+  "version": "1.0.0",
+  "description": "Teachers don't always notice when remote students raise their hand in Zoom. The aim of this project is to build a contraption that raises a physical hand in the classroom when a remote student has a question.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scarsdale-Robotics/Remote-Hand-Raising.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Scarsdale-Robotics/Remote-Hand-Raising/issues"
+  },
+  "homepage": "https://github.com/Scarsdale-Robotics/Remote-Hand-Raising#readme"
+}
