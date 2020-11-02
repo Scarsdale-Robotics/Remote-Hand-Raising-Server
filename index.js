@@ -1,8 +1,8 @@
 const express = require("express")
-const app = express()
+var app = express()
 
-const api = require("./src/api/api.js")
-const user = require("./src/user/user.js")
+var api = require("./api/api.js")
+var user = require("./user/user.js")
 
 api.init(app)
 user.init(app)
