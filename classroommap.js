@@ -1,24 +1,16 @@
-// Implement a map of classroom ids (ints or strings) to the number of people who have their hand raised
-// Three functions:
-// 1. raiseHand(classroomid) -> Implements the raised count for a classroomid
-// 2. lowerHand(classroomid) -> Decrements the raised a classroomid
-// 3. hasHandRaised(classroomid) -> returns whether anyone has their hand raised.
-
-
-
 let classId = new Map();
 
-
+//raiseHand(classroomid) -> Implements the raised count for a classroomid
 function raiseHand(classroomid) {
     let handRaise = classId.get(classroomid);
     classId.set('classroomId', handRaise + 1);
 }
-
+//lowerHand(classroomid) -> Decrements the raised a classroomid
 function lowerHand(classroomid) {
     let handRaise = classId.get(classroomid);
     classId.set('classroomId', handRaise - 1);
 }
-
+//hasHandRaised(classroomid) -> returns whether anyone has their hand raised.
 function hasHandRaised(classroomid) {
     if (classId.get(classroomid) > 0) {
         return true;
