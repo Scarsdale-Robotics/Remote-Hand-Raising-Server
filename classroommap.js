@@ -12,10 +12,7 @@ function lowerHand(classroomid) {
 }
 //hasHandRaised(classroomid) -> returns whether anyone has their hand raised.
 function hasHandRaised(classroomid) {
-    if (classId.get(classroomid) > 0) {
-        return true;
-    }
-    return false;
+    return classId.get(classroomid) > 0;
 }
 
 exports.raiseHand = raiseHand;
