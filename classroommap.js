@@ -23,4 +23,5 @@ function hasClassroomId(classroomid) {
 exports.raiseHand = raiseHand;
 exports.lowerHand = lowerHand;
 exports.hasHandRaised = hasHandRaised;
+exports.hasClassroomId = hasClassroomId
 
