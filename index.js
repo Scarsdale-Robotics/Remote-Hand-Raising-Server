@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var open = require('open');
+const bruh = require("./api/api")
 var fs = require('fs');
 const editJSON = require("edit-json-file", {
     autosave: true
@@ -12,6 +13,8 @@ var app = express();
 var homepagePath = '/site/index.html';
 var data = editJSON('data.json');
 
+
+bruh.init(app)
 
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname, homepagePath));
