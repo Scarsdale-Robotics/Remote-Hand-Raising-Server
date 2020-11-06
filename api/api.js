@@ -8,7 +8,7 @@ function init(app) {
         res.send({id: idGen.next()})
     })
 
-    //Returns wether the robotic hand should be raised
+    //Returns whether the robotic hand should be raised
     app.get("/api/handRaised/:classid", function(req, res) {
         let isRaised = classroomMap.hasHandRaised(req.params.classid)
         res.send({raised: isRaised})
