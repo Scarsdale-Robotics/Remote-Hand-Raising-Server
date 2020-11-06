@@ -1,36 +1,20 @@
-var express = require('express');
-var path = require('path');
-var open = require('open');
-const bruh = require("./api/api")
-var fs = require('fs');
-const editJSON = require("edit-json-file", {
-    autosave: true
-  });
-
+const express = require('express');
+const open = require('open');
 
 const PORT = process.env.PORT || 5000
-var app = express();
-var homepagePath = '/site/index.html';
-var data = editJSON('data.json');
+const app = express();
 
+const api = require('./api/api');
+const user = require('./user/user')
 
-bruh.init(app)
-
-app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname, homepagePath));
-});
-
-app.post('/', function(req, res) {
-    console.log("Button Raised = " + !data.get("isRaised"))
-    data.set("isRaised", !data.get("isRaised"));
-    data.save();
-    res.sendFile(path.join(__dirname, homepagePath));
-});
+api.init(app)
+user.init(app)
 
 app.listen(PORT, function(err){
     if(err){
         console.log(err);
-    }else{
-
+    } else {
+        console.log("Listening on localhost:" + PORT);
+        open('http://localhost:' + PORT);
     }
 });

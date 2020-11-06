@@ -1,5 +1,20 @@
-var http = require('http')
-http.createServer(function (req, res) {
-  res.write('Hello World!'); //write a response to the client
-  res.end(); //end the response
-}).listen(8080); //the server object listens on port 8080 
+const path = require("path")
+const editJSON = require("edit-json-file", {
+    autosave: true
+});
+
+function init(app) {
+	app.get('/', function (req, res) {
+		res.sendFile(path.join(process.cwd(), "/site/index.html"));
+	});
+
+	app.post('/', function (req, res) {
+		var data = editJSON('data.json');
+		console.log("Button Raised = " + !data.get("isRaised"))
+		data.set("isRaised", !data.get("isRaised"));
+		data.save();
+		res.sendFile(path.join(process.cwd(), "/site/index.html"));
+	});
+}
+
+exports.init = init

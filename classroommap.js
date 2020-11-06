@@ -25,7 +25,7 @@ function hasHandRaised(classroomid) {
 }
 //hasClassroomId(classroomid) -> returns whether the classroomId is valid or not
 function hasClassroomId(classroomid) {
-    return classId.has(classroomid);
+    return classroomMap.has(classroomid);
 }
 
 
