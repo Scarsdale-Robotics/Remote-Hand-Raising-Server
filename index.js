@@ -9,7 +9,7 @@ const editJSON = require("edit-json-file", {
 
 var port = 8080;
 var app = express();
-var homepagePath = '/src/site/index.html';
+var homepagePath = '/site/index.html';
 var data = editJSON('data.json');
 
 
@@ -18,7 +18,7 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res) {
-    console.log("Button Press")
+    console.log("Button Raised = " + !data.get("isRaised"))
     data.set("isRaised", !data.get("isRaised"));
     data.save();
     res.sendFile(path.join(__dirname, homepagePath));
