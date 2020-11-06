@@ -14,7 +14,13 @@ function lowerHand(classroomid) {
 function hasHandRaised(classroomid) {
     return classId.get(classroomid) > 0;
 }
+//hasClassroomId(classroomid) -> returns whether the classroomId is valid or not
+function hasClassroomId(classroomid) {
+    return classId.has(classroomid);
+}
+
 
 exports.raiseHand = raiseHand;
 exports.lowerHand = lowerHand;
 exports.hasHandRaised = hasHandRaised;
+
