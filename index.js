@@ -7,7 +7,7 @@ const editJSON = require("edit-json-file", {
   });
 
 
-var port = 8080;
+const PORT = process.env.PORT || 5000
 var app = express();
 var homepagePath = '/site/index.html';
 var data = editJSON('data.json');
@@ -24,10 +24,10 @@ app.post('/', function(req, res) {
     res.sendFile(path.join(__dirname, homepagePath));
 });
 
-app.listen(port, function(err){
+app.listen(PORT, function(err){
     if(err){
         console.log(err);
     }else{
-        open('http://localhost:' + port);
+
     }
 });
