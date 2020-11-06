@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Scarsdale-Robotics/Remote-Hand-Raising#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "edit-json-file": "^1.5.0",
+    "express": "^4.17.1",
+    "open": "^7.3.0",
+    "stack": "^0.1.0"
   }
 }

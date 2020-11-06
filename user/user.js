@@ -1,7 +1,5 @@
-function init(app) {
-    app.get("/user/", function(req, res) {
-        res.send("You hit the user endpoint")
-    })
-}
-
-exports.init = init
+var http = require('http')
+http.createServer(function (req, res) {
+  res.write('Hello World!'); //write a response to the client
+  res.end(); //end the response
+}).listen(8080); //the server object listens on port 8080 
