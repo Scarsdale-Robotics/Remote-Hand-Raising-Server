@@ -1,7 +1,9 @@
 const path = require("path")
+const passport = require('passport');
 const editJSON = require("edit-json-file", {
     autosave: true
 });
+const auth = require("./auth/auth")
 
 function init(app) {
 	app.get('/', function (req, res) {
@@ -19,17 +21,8 @@ function init(app) {
 		data.save();
 		res.sendFile(path.join(process.cwd(), "/site/index.html"));
 	});
-	app.get('/auth/google',
-		passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
-	//passportApi.init(app);
 
-
-	app.get('/auth/google/callback',
-		passport.authenticate('google', { failureRedirect: '/login' }),
-		function (req, res) {
-			res.redirect('/');
-		});
-
+	auth.init(app)
 }
 
 exports.init = init;

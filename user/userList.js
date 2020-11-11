@@ -10,7 +10,6 @@ function registerUser(username) {
 
 		resolve(username);
     });
-    
 }
 exports.registerUser = registerUser;
 
