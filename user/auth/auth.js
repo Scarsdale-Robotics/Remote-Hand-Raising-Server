@@ -1,4 +1,5 @@
 const passport = require('passport');
+const userList = require('./userList')
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 function init(app) {
@@ -16,7 +17,7 @@ function init(app) {
     },
         function (accessToken, refreshToken, profile, done) {
             // todo: define the logic on adding/registering the login user if needed
-            user.registerUser(profile.id).then(function () {
+            userList.registerUser(profile.id).then(function () {
                 return done(null, {
                     id: profile.id
                 });

@@ -1,4 +1,3 @@
-
 const userList = [];
 
 function registerUser(username) {
