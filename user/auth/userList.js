@@ -1,9 +1,10 @@
 const userList = [];
 
 function registerUser(username) {
+	console.log(username)
 	return new Promise(function(resolve, reject) {
 		// Only add if it's new user
-		if (!_.includes(userList, username)) {
+		if (!userList.includes(username)) {
 			userList.push(username);
 		}
 

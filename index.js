@@ -1,11 +1,13 @@
 const express = require('express');
 const open = require('open');
-
-const PORT = process.env.PORT || 5000
 const app = express();
-
 const api = require('./api/api');
 const user = require('./user/user')
+const dotenv = require('dotenv')
+
+dotenv.config()
+
+const PORT = process.env.PORT || 5000
 
 api.init(app)
 user.init(app)
