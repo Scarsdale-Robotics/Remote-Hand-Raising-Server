@@ -5,8 +5,28 @@
 </head>
 <body>
   <h2>Button Go Brrrrrrrrrrrr</h2>
-  <form action="" method="post">
-    <button name="toggleRaised" value="send">Send</button>
-</form>
+   
+  <form id="bruh">
+    <input name="classid">
+    <button type="submit" onclick="raise()">Raise</button>
+    <button type="submit" onclick="lower()">Lower</button>
+  </form>
 </body>
+<script>
+  const form = document.getElementById("bruh")
+
+  function raise() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", `/${form.classid}/hand`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+  }
+
+  function lower() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", `/${form.classid}/hand`, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
+  }
+</script>
 </html>

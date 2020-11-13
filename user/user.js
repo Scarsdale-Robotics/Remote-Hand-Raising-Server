@@ -1,18 +1,20 @@
 const path = require("path")
-const editJSON = require("edit-json-file", {
-    autosave: true
-});
+const classroomMap = require("../classroommap")
 
 function init(app) {
 	app.get('/', function (req, res) {
 		res.sendFile(path.join(process.cwd(), "/site/index.html"));
 	});
 
-	app.post('/', function (req, res) {
-		var data = editJSON('data.json');
-		console.log("Button Raised = " + !data.get("isRaised"))
-		data.set("isRaised", !data.get("isRaised"));
-		data.save();
+	app.put('/:classid/hand', function (req, res) {
+		classroomMap.raiseHand(req.params.classid)
+		console.log("raised (put) = " + classroomMap.hasHandRaised(req.params.classid))
+		res.sendFile(path.join(process.cwd(), "/site/index.html"));
+	});
+
+	app.delete('/:classid/hand', function (req, res) {
+		classroomMap.lowerHand(req.params.classid)
+		console.log("raised (delete) = " + classroomMap.hasHandRaised(req.params.classid))
 		res.sendFile(path.join(process.cwd(), "/site/index.html"));
 	});
 }
