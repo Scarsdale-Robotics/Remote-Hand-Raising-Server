@@ -18,7 +18,7 @@ function init(app) {
         function (accessToken, refreshToken, profile, done) {
             // todo: define the logic on adding/registering the login user if needed
             userList.registerUser(profile.id).then(function () {
-                if (profile.emails?.indexOf('@scarsdaleschools.org') > 0) {
+                if (profile.emails && profile.emails.find(x => x.value.includes('@scarsdaleschools.org'))) {
                      return done(null, {
                         id: profile.id
                     });
