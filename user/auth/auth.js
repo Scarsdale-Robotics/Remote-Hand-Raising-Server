@@ -18,9 +18,14 @@ function init(app) {
         function (accessToken, refreshToken, profile, done) {
             // todo: define the logic on adding/registering the login user if needed
             userList.registerUser(profile.id).then(function () {
-                return done(null, {
-                    id: profile.id
-                });
+                if (profile.emails?.indexOf('@scarsdaleschools.org') > 0) {
+                     return done(null, {
+                        id: profile.id
+                    });
+                }
+                else {
+                    return done(null, false, { message: 'Please use a Scarsdale Schools Email Address to Login'})
+                }
             });
         }
     ));
