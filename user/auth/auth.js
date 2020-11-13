@@ -16,17 +16,14 @@ function init(app) {
         callbackURL: "http://localhost:5000/auth/google/callback"
     },
         function (accessToken, refreshToken, profile, done) {
-            // todo: define the logic on adding/registering the login user if needed
-            userList.registerUser(profile.id).then(function () {
-                if (profile.emails && profile.emails.find(x => x.value.includes('@scarsdaleschools.org'))) {
-                     return done(null, {
-                        id: profile.id
-                    });
-                }
-                else {
-                    return done(null, false, { message: 'Please use a Scarsdale Schools Email Address to Login'})
-                }
-            });
+            if (profile.emails && profile.emails.find(x => x.value.includes('@scarsdaleschools.org'))) {
+                userList.registerUser(profile.id).then(function () {
+                    done(null, profile)
+                })
+            }
+            else {
+                done(null, false, { message: 'Please use a scarsdale schools email' })
+            }
         }
     ));
 
@@ -34,13 +31,14 @@ function init(app) {
 
 function registerRoutes(app) {
     app.get('/auth/google',
-        passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }))
+        passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'email', 'profile'] }))
 
     app.get('/auth/google/callback',
-        passport.authenticate('google', { failureRedirect: '/login' }),
-        function (req, res) {
-            res.redirect('/');
-        });
+        passport.authenticate('google', {
+            failureRedirect: '/login',
+            successRedirect: '/',
+            session: false
+        }))
 }
 
 exports.init = init

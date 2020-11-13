@@ -3,11 +3,14 @@ const open = require('open');
 const app = express();
 const api = require('./api/api');
 const user = require('./user/user')
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
+const passport = require('passport');
 
 dotenv.config()
 
 const PORT = process.env.PORT || 5000
+
+app.use(passport.initialize());
 
 api.init(app)
 user.init(app)
