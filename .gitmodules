@@ -1,0 +1,3 @@
+[submodule "Remote-Hand-Raising-Frontend"]
+	path = Remote-Hand-Raising-Frontend
+	url = https://github.com/Scarsdale-Robotics/Remote-Hand-Raising-Frontend

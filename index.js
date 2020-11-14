@@ -7,8 +7,11 @@ const app = express();
 const api = require('./api/api');
 const user = require('./user/user')
 
+
 api.init(app)
 user.init(app)
+
+app.use(express.static('site'));
 
 app.listen(PORT, function(err) {
   if (err) {
