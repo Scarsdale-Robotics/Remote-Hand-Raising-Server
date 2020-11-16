@@ -1,11 +1,14 @@
 const express = require('express');
 const open = require('open');
-
+const path = require('path');
 const PORT = process.env.PORT || 5000
 const app = express();
 
 const api = require('./api/api');
 const user = require('./user/user')
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/site'));
 
 
 api.init(app)
