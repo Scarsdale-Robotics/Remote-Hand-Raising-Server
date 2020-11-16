@@ -11,9 +11,12 @@ dotenv.config()
 const PORT = process.env.PORT || 5000
 
 app.use(passport.initialize());
+app.use(flash());
 
 api.init(app)
 user.init(app)
+
+app.use(express.static('site'));
 
 app.listen(PORT, function(err) {
   if (err) {

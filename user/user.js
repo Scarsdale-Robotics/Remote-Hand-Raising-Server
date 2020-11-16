@@ -1,28 +1,33 @@
-const path = require("path")
-const passport = require('passport');
+const fs = requeire("fs")
 const editJSON = require("edit-json-file", {
-    autosave: true
+  autosave: true
 });
 const auth = require("./auth/auth")
 
+
 function init(app) {
-	app.get('/', function (req, res) {
-		res.sendFile(path.join(process.cwd(), "/site/index.html"));
-	});
+  auth.init(app)
 
-	app.get('/login', function (req, res) {
-		res.sendFile(path.join(process.cwd(), "/site/login.html"));
-	});
+  app.get('/', function(req, res) {
+    //res.sendFile(path.join(process.cwd(), "/site/index.html"));
+    sendSite('site/index.html', res);
+  });
 
-	app.post('/', function (req, res) {
-		var data = editJSON('data.json');
-		console.log("Button Raised = " + !data.get("isRaised"))
-		data.set("isRaised", !data.get("isRaised"));
-		data.save();
-		res.sendFile(path.join(process.cwd(), "/site/index.html"));
-	});
+  app.get('/brb.html', function(req, res) {
+    sendSite('site/brb.html', res);
+  });
 
-	auth.init(app)
+  app.post('/brb.html', function(req, res) {
+    var data = editJSON('data.json');
+    console.log("Button Raised = " + !data.get("isRaised"))
+    data.set("isRaised", !data.get("isRaised"));
+    data.save();
+    sendSite('site/brb.html', res)
+  });
+}
+
+function sendSite(sitePath, response){
+  response.send(fs.readFileSync('site/nav.html', 'utf-8') + fs.readFileSync(sitePath, 'utf-8'));
 }
 
 exports.init = init;
