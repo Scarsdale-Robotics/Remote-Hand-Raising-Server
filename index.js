@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 app.use(cookieSession({
     name: "session",
-    keys: ['secret'],
+    keys: [process.env.COOKIE_SECRET],
     maxAge: 24 * 60 * 60 * 1000 //24 hours
 }))
 
