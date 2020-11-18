@@ -1,34 +1,44 @@
-const path = require('path')
-const fs = require('fs')
-const ejs = require('ejs')
+const path = require('path');
+const fs = require('fs');
+const ejs = require('ejs');
 const editJSON = require("edit-json-file", {
   autosave: true
 });
+const loginRequired = require('./auth/loginRequired');
+const auth = require("./auth/auth");
 
 
 function init(app) {
-  app.get('/', function(req, res) {
-    res.render('index')
-  });
-  app.get('/index', function(req, res) {
-    res.render('index')
-  });
+  auth.init(app);
 
-  app.get('/brb', function(req, res) {
-    res.render('brb')
+  app.get('/', function (req, res) {
+    res.render('index');
+  });
+  app.get('/index', function (req, res) {
+    res.render('index');
   });
 
+  app.get('/brb', loginRequired, function (req, res) {
+    res.render('brb');
+  });
 
-
-  app.post('/brb', function(req, res) {
+  app.post('/brb', loginRequired, function (req, res) {
     var data = editJSON('data.json');
-    console.log("Button Raised = " + !data.get("isRaised"))
+    console.log("Button Raised = " + !data.get("isRaised"));
     data.set("isRaised", !data.get("isRaised"));
     data.save();
-    res.render('brb')
+    res.render('brb');
+  });
+
+  app.get('/login', function (req, res) {
+    res.render('login', { message: req.flash("error") });
+  });
+
+  app.get('/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/');
   });
 }
 
-
-
-exports.init = init
+exports.init = init;

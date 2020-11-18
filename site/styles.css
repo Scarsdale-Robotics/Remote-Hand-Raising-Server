@@ -125,3 +125,7 @@ input:focus {
   opacity: 70%;
   outline: none;
 }
+
+#loginErr {
+  color: #b61b1b
+}
