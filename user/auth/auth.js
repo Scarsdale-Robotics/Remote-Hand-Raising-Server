@@ -29,10 +29,9 @@ function init(app) {
         callbackURL: "https://scarsdale-raise-hand.herokuapp.com/auth/google/callback"
     },
         function (accessToken, refreshToken, profile, done) {
-          console.log('reeeeeeeeeee')
+
             userMap.findUser(profile.id).then((user) => {
                 if (profile.emails && profile.emails.find(x => x.value.includes('@scarsdaleschools.org'))) {
-
                     done(null, user)
                 }
                 else {

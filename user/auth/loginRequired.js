@@ -2,7 +2,7 @@ const loginRequired = (req, res, next) => {
 
   if (req.user) {
     req.flash('logIn', 'Hi, ' + req.user.name.givenName);
-    //console.log('Hi, ' + req.user.name.givenName)
+    console.log('Hi, ' + req.user.name.givenName)
 
     next()
   } else {
