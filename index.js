@@ -32,6 +32,8 @@ app.use(passport.session())
 api.init(app);
 user.init(app);
 
+
+
 app.use(express.static('site'));
 
 app.listen(PORT, function(err) {

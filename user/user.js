@@ -12,14 +12,18 @@ function init(app) {
   auth.init(app);
 
   app.get('/', function (req, res) {
-    res.render('index');
+    req.flash('logIn', 'Login');
+
+    res.render('', {logIn: req.flash("logIn") });
+
   });
   app.get('/index', function (req, res) {
-    res.render('index');
+
+    res.render('index', { message: req.flash("error"), logIn: req.flash("logIn") });
   });
 
   app.get('/brb', loginRequired, function (req, res) {
-    res.render('brb');
+    res.render('brb', { message: req.flash("error"), logIn: req.flash("logIn") });
   });
 
   app.post('/brb', loginRequired, function (req, res) {
@@ -31,7 +35,9 @@ function init(app) {
   });
 
   app.get('/login', function (req, res) {
-    res.render('login', { message: req.flash("error") });
+    req.flash('logIn', 'Login');
+
+    res.render('login', { message: req.flash("error"), logIn: req.flash("logIn") });
   });
 
   app.get('/logout', (req, res) => {
