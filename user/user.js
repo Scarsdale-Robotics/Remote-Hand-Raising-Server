@@ -16,7 +16,7 @@ function init(app) {
     res.render('', {logIn: req.flash("logIn") });
 
   });
-  app.get('/index', function (req, res) {
+  app.get('/index', loginRequired, function (req, res) {
 
     res.render('index', {logIn: req.flash("logIn"), message: req.flash("error")} );
   });
