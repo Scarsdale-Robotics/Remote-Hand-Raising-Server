@@ -1,25 +1,25 @@
-  @font-face {
-    font-family: "mont";
-    src: url("montserrat/Montserrat-Regular.otf");
-  }
+@font-face {
+  font-family: "mont";
+  src: url("montserrat/Montserrat-Regular.otf");
+}
 
-  @font-face {
-    font-family: "mont-bold";
-    src: url("montserrat/Montserrat-Bold.otf");
-  }
+@font-face {
+  font-family: "mont-bold";
+  src: url("montserrat/Montserrat-Bold.otf");
+}
 
-  @font-face {
-    font-family: "mont-black";
-    src: url("montserrat/Montserrat-Black.otf");
-  }
+@font-face {
+  font-family: "mont-black";
+  src: url("montserrat/Montserrat-Black.otf");
+}
 
 .navbar-custom {
-    background-color:maroon;
+  background-color:maroon;
 }
 
 .navbar-custom .navbar-brand, .navbar-custom .navbar-text, .navbar-custom .navbar-nav, .navbar-custom .navbar-nav, .nav-link {
-    color:white;
-    font-family: "mont-bold" !important;
+  color:white;
+  font-family: "mont-bold" !important;
 }
 
 .nav-link:hover {
@@ -27,105 +27,118 @@ color:lightgray;
 }
 
 .jumbotron {
-  background-image:url('backgroundhand.png');
-  height: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: lightgray;
+background-image:url('backgroundhand.png');
+height: 500px;
+background-repeat: no-repeat;
+background-size: cover;
+background-color: lightgray;
 }
 
 #fronttext {
-  font-size: 225px;
-  font-family: "mont-black";
-  color: whitesmoke;
-  margin:-20px;
+font-size: 225px;
+font-family: "mont-black";
+color: whitesmoke;
+margin:-20px;
 }
 
 #fronttext1 {
-  font-size: 40px;
-  font-family: "mont-bold";
-  color: whitesmoke;
-  margin:-5px;
+font-size: 40px;
+font-family: "mont-bold";
+color: whitesmoke;
+margin:-5px;
 }
 
 #fronttext2 {
-  font-size: 40px;
-  font-family: "mont-bold";
-  color: whitesmoke;
+font-size: 40px;
+font-family: "mont-bold";
+color: whitesmoke;
 }
 
 #fronttext3 {
-  font-family: "mont";
-  color: whitesmoke;
+font-family: "mont";
+color: whitesmoke;
 }
 
 #brbpart {
-  font-family: "mont";
+font-family: "mont";
 }
 
 #inputformsbox {
-  font-family: "mont-bold";
+font-family: "mont-bold";
 }
 
 #inputformsinput {
-  font-family: "mont";
-  border-width: 0px;
-  border-bottom-style: solid;
-  border-bottom-width: 4px;
-  border-color: maroon;
-  background-color: whitesmoke;
-  outline-width: 0 !important;
-  outline: 0 !important;
+font-family: "mont";
+border-width: 0px;
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-color: maroon;
+background-color: whitesmoke;
+outline-width: 0 !important;
+outline: 0 !important;
+box-shadow: none;
 }
 
 #inputformsinput:focus {
-  font-family: "mont";
-  border-width: 0px;
-  border-bottom-style: solid;
-  border-bottom-width: 4px;
-  border-bottom-color: maroon;
-  outline-width: 10px !important;
-  outline: 0 !important;
+font-family: "mont";
+border-width: 0px;
+border-bottom-style: solid;
+border-bottom-width: 4px;
+border-bottom-color: maroon;
+outline-width: 10px !important;
+outline: 0 !important;
+box-shadow: none;
 }
 
 input:focus {
-  outline-width: 0 !important;
-  outline: 0 !important;
+outline-width: 0 !important;
+outline: 0 !important;
 }
 
 #smalltext {
-  font-family: "mont";
+font-family: "mont";
 }
 
 .btn-custom {
-  background-color:maroon;
+background-color:maroon;
 }
 
 #inputformsbtn {
-  font-family: "mont-bold";
-  color: white;
+font-family: "mont-bold";
+color: white;
 }
 
 #brb {
-  background-image:url('bigredbutton.png');
-  height: 500px;
-  width: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
+background-image:url('Button1.png');
+height: 500px;
+width: 500px;
+background-repeat: no-repeat;
+background-size: cover;
+background-color: transparent;
+box-shadow: none;
 }
 
 #brb:hover {
-  background-image:url('bigredbutton.png');
-  height: 500px;
-  width: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: transparent;
-  opacity: 70%;
-  outline: none;
+height: 500px;
+width: 500px;
+background-repeat: no-repeat;
+background-size: cover;
+background-color: transparent;
+opacity: 100%;
+outline: none;
+box-shadow: none;
 }
 
-#loginErr {
-  color: #b61b1b
+#brb:focus {
+background-image:url('Button2.png');
+height: 500px;
+width: 500px;
+box-shadow: none;
+}
+
+.htdetect {
+font-family: "mont-black";
+font-size: 50px;
+background-color: maroon;
+color: white;
 }
