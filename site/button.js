@@ -15,7 +15,7 @@ let pingEvery = 30;
 
 
 function setup() {
-  console.log(window.location.host)
+
   frameRate(15)
   canvas = createCanvas(screen.width, screen.height);
   // size(displayWidth, displayHeight/2);
@@ -27,8 +27,7 @@ function setup() {
   textAlign(CENTER)
 
 
-  //See if hand is handRaised
-  var url = window.location.protocol + '://' + window.location.host + '/api/handRaised/bbbbbbb';
+
 
 }
 
@@ -37,6 +36,7 @@ function draw() {
   if (tickCounter % pingEvery == 0) {
     tickCounter = 1
     var url = window.location.protocol + '/api/handRaised/bbbbbbb';
+
     httpGet(url, 'json', function(response) {
       console.log(response)
 
@@ -83,6 +83,7 @@ function draw() {
 function mousePressed() {
 pressed();
 
+
 }
 
 function mouseReleased() {
@@ -90,6 +91,7 @@ function mouseReleased() {
     isPressed = false;
     var url = window.location;
     var postData = '{"foo": 1}'
+
     httpPost(url, 'json',
       postData, (res) => {
         console.log(res);
