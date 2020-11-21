@@ -100,7 +100,7 @@ function mouseReleased() {
   }
 }
 
-function touchStarted() {
+function touchEnded() {
 pressed();
 }
 
@@ -108,6 +108,6 @@ function pressed(){
   isPressed = false;
   if (mouseX > buttonX - buttonW / 3 && mouseX < buttonX + buttonW / 3 && mouseY > buttonY - buttonH / 2 && mouseY < buttonY + buttonH / 4) {
     isPressed = true;
-    
+
   }
 }
