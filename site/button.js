@@ -81,15 +81,33 @@ function draw() {
 }
 
 function mousePressed() {
-  isPressed = false;
-  if (mouseX > buttonX - buttonW / 3 && mouseX < buttonX + buttonW / 3 && mouseY > buttonY - buttonH / 2 && mouseY < buttonY + buttonH / 4) {
-    isPressed = true;
-  }
+pressed();
 
 }
 
-function mouseReleased() {
-  if (isPressed == true) {
+// function mouseReleased() {
+//   if (isPressed == true) {
+//     isPressed = false;
+//     var url = window.location;
+//     var postData = '{"foo": 1}'
+//     httpPost(url, 'json',
+//       postData, (res) => {
+//         console.log(res);
+//         console.log(url)
+//       });
+//       handRaised = !handRaised
+//
+//   }
+// }
+
+function touchStarted() {
+pressed();
+}
+
+function pressed(){
+  isPressed = false;
+  if (mouseX > buttonX - buttonW / 3 && mouseX < buttonX + buttonW / 3 && mouseY > buttonY - buttonH / 2 && mouseY < buttonY + buttonH / 4) {
+    isPressed = true;
     isPressed = false;
     var url = window.location;
     var postData = '{"foo": 1}'
@@ -99,6 +117,5 @@ function mouseReleased() {
         console.log(url)
       });
       handRaised = !handRaised
-
   }
 }
