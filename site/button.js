@@ -15,6 +15,7 @@ let pingEvery = 30;
 
 
 function setup() {
+
   frameRate(15)
   canvas = createCanvas(screen.width, screen.height);
   // size(displayWidth, displayHeight/2);
@@ -26,8 +27,7 @@ function setup() {
   textAlign(CENTER)
 
 
-  //See if hand is handRaised
-  var url = 'http://' + window.location.host + '/api/handRaised/bbbbbbb';
+
 
 }
 
@@ -35,7 +35,8 @@ function setup() {
 function draw() {
   if (tickCounter % pingEvery == 0) {
     tickCounter = 1
-    var url = 'http://' + window.location.host + '/api/handRaised/bbbbbbb';
+    var url = window.location.protocol + '/api/handRaised/bbbbbbb';
+
     httpGet(url, 'json', function(response) {
       console.log(response)
 
@@ -80,23 +81,35 @@ function draw() {
 }
 
 function mousePressed() {
-  isPressed = false;
-  if (mouseX > buttonX - buttonW / 3 && mouseX < buttonX + buttonW / 3 && mouseY > buttonY - buttonH / 2 && mouseY < buttonY + buttonH / 4) {
-    isPressed = true;
-  }
+pressed();
+
 
 }
 
 function mouseReleased() {
   if (isPressed == true) {
     isPressed = false;
-    var url = 'http://' + window.location.host + '/brb';
-    var postData = {};
+    var url = window.location;
+    var postData = '{"foo": 1}'
+
     httpPost(url, 'json',
       postData, (res) => {
         console.log(res);
+        console.log(url)
       });
       handRaised = !handRaised
+
+  }
+}
+
+function touchEnded() {
+pressed();
+}
+
+function pressed(){
+  isPressed = false;
+  if (mouseX > buttonX - buttonW / 3 && mouseX < buttonX + buttonW / 3 && mouseY > buttonY - buttonH / 2 && mouseY < buttonY + buttonH / 4) {
+    isPressed = true;
 
   }
 }
