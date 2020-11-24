@@ -142,3 +142,7 @@ font-size: 50px;
 background-color: maroon;
 color: white;
 }
+
+#classcode-form {
+  padding-top: 100px;
+}

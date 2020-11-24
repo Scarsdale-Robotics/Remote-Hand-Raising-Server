@@ -1,6 +1,5 @@
 const classroomMap = require("../classroommap");
 const idGen = require("./generateId");
-const editJSON = require("edit-json-file");
 
 function init(app) {
 
@@ -12,7 +11,7 @@ function init(app) {
     //Returns whether the robotic hand should be raised
     app.get("/api/handRaised/:classid", function(req, res) {
         let isRaised = classroomMap.hasHandRaised(req.params.classid);
-        res.status(200).send({response: 200, raised: editJSON('data.json').get("isRaised")});
+        res.status(200).send({response: 200, raised: isRaised});
     })
 }
 
