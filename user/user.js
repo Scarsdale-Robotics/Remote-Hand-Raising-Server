@@ -17,10 +17,9 @@ function init(app) {
         res.render('brb', { logIn: req.welcomeMessage });
     });
 
-    app.post('/brb', loginRequired, welcomeMessage, function (req, res) {
-        console.log("Button Raised = " + classroomMap.hasHandRaised(req.classcode));
+    app.post('/brb', loginRequired, function (req, res) {
         classroomMap.raiseHand(req.body.classcode)
-        res.render('brb', { logIn: req.welcomeMessage });
+        res.status(200).send("");
     });
 
     app.get('/login', welcomeMessage, function (req, res) {

@@ -18,25 +18,26 @@ const input = document.getElementById("classcode")
 function setup() {
     frameRate(15);
     canvas = createCanvas(screen.width, screen.height);
-    // size(displayWidth, displayHeight/2);
 
     buttonUp = loadImage('Button1.png');
     buttonDown = loadImage('Button2.png');
     buttonIMG = buttonUp;
     imageMode(CENTER);
     textAlign(CENTER);
-
 }
 
 function draw() {
     if (tickCounter % pingEvery == 0) {
         tickCounter = 1;
-        if (input.value !== "") {
+        if (input.value === "") {
+             handRaised = false 
+             //Set to false if no input so we don't end up in a situation 
+             //where the user deletes the code and hand is still raised
+        } else {
             var url = window.location.protocol + "/api/handRaised/" + input.value;
-
-            httpGet(url, 'json', function (response) {
-                handRaised = response.raised;
-            });
+            httpGet(url, 'json', (res) => {
+                handRaised = res.raised;
+            });      
         }
     }
     tickCounter++;
@@ -78,12 +79,7 @@ function mouseReleased() {
         var postData = {
             classcode: input.value
         };
-        console.log(postData)
-        httpPost(url, 'json', postData, (res) => {
-            console.log(res);
-            console.log(url);
-        });
-        handRaised = !handRaised; //Update immediately (will get overridden eventually if needed)
+        httpPost(url, 'text', postData, (res) => {}, (err) => {console.log(err)});
     }
 }
 
