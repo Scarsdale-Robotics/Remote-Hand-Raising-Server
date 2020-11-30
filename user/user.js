@@ -18,8 +18,17 @@ function init(app) {
     });
 
     app.post('/brb', loginRequired, function (req, res) {
-        classroomMap.raiseHand(req.body.classcode)
-        res.status(200).send("");
+        if(req.body.action === "raise") {
+            console.log("Raise")
+            classroomMap.raiseHand(req.body.classcode)
+            res.status(200).send("");
+        } else if(req.body.action === "lower") {
+            console.log("Lower")
+            classroomMap.lowerHand(req.body.classcode)
+            res.status(200).send("");
+        } else {
+            throw new Error("Bad action. Somebody messed up.")
+        }      
     });
 
     app.get('/login', welcomeMessage, function (req, res) {

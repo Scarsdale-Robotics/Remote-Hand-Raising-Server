@@ -4,7 +4,8 @@ let buttonX = 100;
 let buttonY = 400;
 
 let isPressed = false;
-let handRaised = false;
+let selfHandRaised = false;
+let serverHandRaised = false;
 let buttonUp;
 let buttonDown;
 let buttonIMG;
@@ -30,13 +31,13 @@ function draw() {
     if (tickCounter % pingEvery == 0) {
         tickCounter = 1;
         if (input.value === "") {
-             handRaised = false 
+             serverHandRaised = false 
              //Set to false if no input so we don't end up in a situation 
              //where the user deletes the code and hand is still raised
         } else {
             var url = window.location.protocol + "/api/handRaised/" + input.value;
             httpGet(url, 'json', (res) => {
-                handRaised = res.raised;
+                serverHandRaised = res.raised;
             });      
         }
     }
@@ -57,14 +58,22 @@ function draw() {
     background(255);
     image(buttonIMG, buttonX, buttonY, buttonW, buttonH);
 
-    var buttonText = '';
-    if (handRaised) {
-        buttonText = 'raised.';
+    let serverText = '';
+    let selfText = '';
+    if (serverHandRaised) {
+        serverText = 'raised.';
     } else {
-        buttonText = 'not raised.';
+        serverText = 'not raised.';
+    }
+
+    if (selfHandRaised) {
+        selfText = 'raised.';
+    } else {
+        selfText = 'not raised.';
     }
     textSize(40 * windowWidth / 1080);
-    text("The hand is " + buttonText, buttonX, buttonY / 5 * 2);
+    text("The hand is " + serverText, buttonX, buttonY / 5 * 2);
+    text("Your hand is " + selfText, buttonX, buttonY / 5 * 0.9);
 }
 //End P5 drawing
 
@@ -77,9 +86,16 @@ function mouseReleased() {
         isPressed = false;
         var url = window.location;
         var postData = {
+            action: selfHandRaised ? "lower" : "raise",
             classcode: input.value
         };
+        console.log(selfHandRaised)
+        console.log(postData)
         httpPost(url, 'text', postData, (res) => {}, (err) => {console.log(err)});
+
+        if(input.value !== "") {
+            selfHandRaised = !selfHandRaised
+        }
     }
 }
 
