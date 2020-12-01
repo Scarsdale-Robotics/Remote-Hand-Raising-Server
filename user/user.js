@@ -16,10 +16,6 @@ function init(app) {
     res.render('', {logIn: req.flash("logIn") });
 
   });
-  app.get('/index', loginRequired, function (req, res) {
-
-    res.render('index', {logIn: req.flash("logIn"), message: req.flash("error")} );
-  });
 
   app.get('/brb', loginRequired, function (req, res) {
     res.render('brb', {logIn: req.flash("logIn"), message: req.flash("error")} );
