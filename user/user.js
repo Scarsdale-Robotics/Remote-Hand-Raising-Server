@@ -9,9 +9,6 @@ function init(app) {
     app.get('/', welcomeMessage, function (req, res) {
         res.render('', { logIn: req.welcomeMessage });
     });
-    app.get('/index', loginRequired, welcomeMessage, function (req, res) {
-        res.render('index', { logIn: req.welcomeMessage });
-    });
 
     app.get('/brb', loginRequired, welcomeMessage, function (req, res) {
         res.render('brb', { logIn: req.welcomeMessage });
@@ -40,6 +37,7 @@ function init(app) {
         req.logout();
         res.redirect('/');
     });
+
 }
 
 exports.init = init;
