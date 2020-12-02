@@ -14,131 +14,136 @@
 }
 
 .navbar-custom {
-  background-color:maroon;
+  background-color: maroon;
 }
 
 .navbar-custom .navbar-brand, .navbar-custom .navbar-text, .navbar-custom .navbar-nav, .navbar-custom .navbar-nav, .nav-link {
-  color:white;
+  color: white;
   font-family: "mont-bold" !important;
 }
 
 .nav-link:hover {
-color:lightgray;
+  color: lightgray;
 }
 
 .jumbotron {
-background-image:url('backgroundhand.png');
-height: 500px;
-background-repeat: no-repeat;
-background-size: cover;
-background-color: lightgray;
+  background-image: url('backgroundhand.png');
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: lightgray;
+  margin-bottom: 100;
 }
 
 #fronttext {
-font-size: 225px;
-font-family: "mont-black";
-color: whitesmoke;
-margin:-20px;
+  font-size: 225px;
+  font-family: "mont-black";
+  color: whitesmoke;
+  margin: -20px;
 }
 
 #fronttext1 {
-font-size: 40px;
-font-family: "mont-bold";
-color: whitesmoke;
-margin:-5px;
+  font-size: 40px;
+  font-family: "mont-bold";
+  color: whitesmoke;
+  margin: -5px;
 }
 
 #fronttext2 {
-font-size: 40px;
-font-family: "mont-bold";
-color: whitesmoke;
+  font-size: 40px;
+  font-family: "mont-bold";
+  color: whitesmoke;
 }
 
 #fronttext3 {
-font-family: "mont";
-color: whitesmoke;
+  font-family: "mont";
+  color: whitesmoke;
 }
 
 #brbpart {
-font-family: "mont";
+  font-family: "mont";
+  margin-bottom: 200px
 }
 
 #inputformsbox {
-font-family: "mont-bold";
+  font-family: "mont-bold";
 }
 
 #inputformsinput {
-font-family: "mont";
-border-width: 0px;
-border-bottom-style: solid;
-border-bottom-width: 4px;
-border-color: maroon;
-background-color: whitesmoke;
-outline-width: 0 !important;
-outline: 0 !important;
-box-shadow: none;
+  font-family: "mont";
+  border-width: 0px;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  border-color: maroon;
+  background-color: whitesmoke;
+  outline-width: 0 !important;
+  outline: 0 !important;
+  box-shadow: none;
 }
 
 #inputformsinput:focus {
-font-family: "mont";
-border-width: 0px;
-border-bottom-style: solid;
-border-bottom-width: 4px;
-border-bottom-color: maroon;
-outline-width: 10px !important;
-outline: 0 !important;
-box-shadow: none;
+  font-family: "mont";
+  border-width: 0px;
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+  border-bottom-color: maroon;
+  outline-width: 10px !important;
+  outline: 0 !important;
+  box-shadow: none;
 }
 
 input:focus {
-outline-width: 0 !important;
-outline: 0 !important;
+  outline-width: 0 !important;
+  outline: 0 !important;
 }
 
 #smalltext {
-font-family: "mont";
+  font-family: "mont";
 }
 
 .btn-custom {
-background-color:maroon;
+  background-color: maroon;
 }
 
 #inputformsbtn {
-font-family: "mont-bold";
-color: white;
+  font-family: "mont-bold";
+  color: white;
 }
 
 #brb {
-background-image:url('Button1.png');
-height: 500px;
-width: 500px;
-background-repeat: no-repeat;
-background-size: cover;
-background-color: transparent;
-box-shadow: none;
+  background-image: url('Button1.png');
+  height: 500px;
+  width: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 #brb:hover {
-height: 500px;
-width: 500px;
-background-repeat: no-repeat;
-background-size: cover;
-background-color: transparent;
-opacity: 100%;
-outline: none;
-box-shadow: none;
+  height: 500px;
+  width: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  opacity: 100%;
+  outline: none;
+  box-shadow: none;
 }
 
 #brb:focus {
-background-image:url('Button2.png');
-height: 500px;
-width: 500px;
-box-shadow: none;
+  background-image: url('Button2.png');
+  height: 500px;
+  width: 500px;
+  box-shadow: none;
 }
 
 .htdetect {
-font-family: "mont-black";
-font-size: 50px;
-background-color: maroon;
-color: white;
+  font-family: "mont-black";
+  font-size: 50px;
+  background-color: maroon;
+  color: white;
+}
+#fronttext2{
+  margin-bottom: 90px;
 }
