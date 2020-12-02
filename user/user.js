@@ -1,44 +1,43 @@
-const path = require('path');
-const fs = require('fs');
-const ejs = require('ejs');
-const editJSON = require("edit-json-file", {
-  autosave: true
-});
+const classroomMap = require("../classroommap")
 const loginRequired = require('./auth/loginRequired');
 const auth = require("./auth/auth");
-
+const welcomeMessage = require("./welcomeMessage")
 
 function init(app) {
-  auth.init(app);
+    auth.init(app);
 
-  app.get('/', function (req, res) {
-    req.flash('logIn', 'Login');
-    res.render('', {logIn: req.flash("logIn") });
+    app.get('/', welcomeMessage, function (req, res) {
+        res.render('', { logIn: req.welcomeMessage });
+    });
 
-  });
+    app.get('/brb', loginRequired, welcomeMessage, function (req, res) {
+        res.render('brb', { logIn: req.welcomeMessage });
+    });
 
-  app.get('/brb', loginRequired, function (req, res) {
-    res.render('brb', {logIn: req.flash("logIn"), message: req.flash("error")} );
-  });
+    app.post('/brb', loginRequired, function (req, res) {
+        if(req.body.action === "raise") {
+            console.log("Raise")
+            classroomMap.raiseHand(req.body.classcode)
+            res.status(200).send("");
+        } else if(req.body.action === "lower") {
+            console.log("Lower")
+            classroomMap.lowerHand(req.body.classcode)
+            res.status(200).send("");
+        } else {
+            throw new Error("Bad action. Somebody messed up.")
+        }      
+    });
 
-  app.post('/brb', loginRequired, function (req, res) {
-    var data = editJSON('data.json');
-    console.log("Button Raised = " + !data.get("isRaised"));
-    data.set("isRaised", !data.get("isRaised"));
-    data.save();
-    res.render('brb', {logIn: req.flash("logIn"), message: req.flash("error")});
-  });
+    app.get('/login', welcomeMessage, function (req, res) {
+        res.render('login', { message: req.flash("error"), logIn: req.welcomeMessage });
+    });
 
-  app.get('/login', function (req, res) {
+    app.get('/logout', (req, res) => {
+        req.session = null;
+        req.logout();
+        res.redirect('/');
+    });
 
-    res.render('login', { message: req.flash("error"), logIn: req.flash("logIn") });
-  });
-
-  app.get('/logout', (req, res) => {
-    req.session = null;
-    req.logout();
-    res.redirect('/');
-  });
 }
 
 exports.init = init;
